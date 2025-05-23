@@ -1,1 +1,181 @@
-test
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Coming Soon…</title>
+    <style>
+        /* --- ページ共通 --- */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            /* 上部に寄せる */
+            justify-content: flex-start;
+            background: #000;
+            color: #fff;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+        }
+
+        /* --- 全体を包むコンテナ --- */
+        .wrapper {
+            width: 100%;
+            padding: 0 20px;
+            /* 上から余白を追加して下方向へオフセット (値を小さくしてさらに上に寄せる) */
+            margin-bottom: 10vh;
+        }
+
+        .wrapper h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            font-weight: normal;
+        }
+
+        /* --- カウントダウン部分を包むコンテナ --- */
+        .countdown-wrapper {
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* --- カウントダウン --- */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        /* --- 各ユニット --- */
+        .unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+        }
+
+        /* --- 2桁の数字を横並び --- */
+        .digits {
+            display: flex;
+            gap: 8px;
+            width: 100%;
+        }
+
+        /* --- 数字カード --- */
+        .box {
+            background: #3e3e3e;
+            /* 均等に幅を分配し、最小サイズも0に */
+            flex: 1 1 0;
+            min-width: 0;
+            aspect-ratio: 0.7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            /* フォントサイズを幅に合わせて可変に */
+            font-size: clamp(1rem, 7vw, 5rem);
+            font-weight: bold;
+            color: #fff;
+        }
+
+        /* --- 単位ラベル --- */
+        .label {
+            margin-top: 8px;
+            font-size: clamp(0.6rem, 2vw, 1em);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ddd;
+            font-weight: normal;
+        }
+
+        /* --- コロンセパレータ --- */
+        .sep {
+            flex: none;
+            /* コロンも可変に */
+            font-size: clamp(1rem, 5vw, 3rem);
+            color: #fff;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1>Coming Soon…</h1>
+        <div class="countdown-wrapper">
+            <div class="countdown" id="cd"></div>
+        </div>
+    </div>
+
+    <script>
+        const goal = new Date("2025-06-25T00:00:00").getTime();
+
+        function pad(n) {
+            return n.toString().padStart(2, "0");
+        }
+
+        function update() {
+            const diff = goal - Date.now();
+            const container = document.getElementById("cd");
+
+            if (diff <= 0) {
+                container.innerHTML = '<h2 style="color:#fff">Launched!</h2>';
+                clearInterval(timer);
+                return;
+            }
+
+            const daysStr = pad(Math.floor(diff / (1000 * 60 * 60 * 24)));
+            const hoursStr = pad(Math.floor((diff / (1000 * 60 * 60)) % 24));
+            const minutesStr = pad(Math.floor((diff / (1000 * 60)) % 60));
+            const secondsStr = pad(Math.floor((diff / 1000) % 60));
+
+            container.innerHTML = `
+        <div class="unit">
+          <div class="digits">
+            <div class="box">${daysStr.charAt(0)}</div>
+            <div class="box">${daysStr.charAt(1)}</div>
+          </div>
+          <div class="label">Days</div>
+        </div>
+        <div class="sep">:</div>
+        <div class="unit">
+          <div class="digits">
+            <div class="box">${hoursStr.charAt(0)}</div>
+            <div class="box">${hoursStr.charAt(1)}</div>
+          </div>
+          <div class="label">Hours</div>
+        </div>
+        <div class="sep">:</div>
+        <div class="unit">
+          <div class="digits">
+            <div class="box">${minutesStr.charAt(0)}</div>
+            <div class="box">${minutesStr.charAt(1)}</div>
+          </div>
+          <div class="label">Minutes</div>
+        </div>
+        <div class="sep">:</div>
+        <div class="unit">
+          <div class="digits">
+            <div class="box">${secondsStr.charAt(0)}</div>
+            <div class="box">${secondsStr.charAt(1)}</div>
+          </div>
+          <div class="label">Seconds</div>
+        </div>
+      `;
+        }
+
+        update();
+        const timer = setInterval(update, 1000);
+    </script>
+</body>
+
+</html>
