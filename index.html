@@ -14,15 +14,21 @@
         /* ロゴ位置調整 */
         .site-logo {
             position: absolute;
+            /* 画面に固定 */
             top: 20px;
-            left: 20px;
+            /* 上からの余白 */
+            left: 50%;
+            /* 左端を画面中央に */
+            transform: translateX(-50%);
+            /* 自身の幅の半分だけ左にずらして中央に */
             z-index: 1000;
+            /* 他要素より前面に */
         }
 
         /* ロゴ画像サイズ */
         .site-logo img {
             display: block;
-            height: 60px;
+            height: 90px;
             width: auto;
         }
 
