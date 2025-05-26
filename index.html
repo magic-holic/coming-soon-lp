@@ -324,8 +324,18 @@
                         <div aria-hidden="true" style="position: absolute; left: -5000px;"><input type="text"
                                 name="b_f573e22ed3d5bfd1437a97aed_da2f06b832" tabindex="-1" value=""></div>
                         <div class="clear"><input type="submit" name="subscribe" id="mc-embedded-subscribe"
-                                class="button" value="Subscribe"
-                                onclick="dataLayer.push({'event': 'subscribe_click'});"></div>
+                                class="button" value="Subscribe" onclick='
+                                    (function(){
+                                        var email = document.getElementById("mce-EMAIL").value.trim();
+                                        console.log("Email value is:", email);
+                                        if ( email !== "" ) {
+                                        dataLayer.push({ event: "subscribe_click" });
+                                        console.log("→ subscribe_click pushed");
+                                        } else {
+                                        console.log("→ empty, not pushed");
+                                        }
+                                    })();
+                                    '></div>
                     </div>
                 </form>
             </div>
