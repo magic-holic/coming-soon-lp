@@ -357,18 +357,6 @@
                 type="text/javascript">(function ($) { window.fnames = new Array(); window.ftypes = new Array(); fnames[0] = 'EMAIL'; ftypes[0] = 'email'; fnames[1] = 'FNAME'; ftypes[1] = 'text'; }(jQuery)); var $mcj = jQuery.noConflict(true);</script>
         </div>
     </div>
-    <script>
-        // フォームの submit を監視して、正常送信時に SignUp イベントを飛ばす
-        document.addEventListener('DOMContentLoaded', function () {
-            var form = document.getElementById('mc-embedded-subscribe-form');
-            form.addEventListener('submit', function (event) {
-                // 送信ボタンが押されたら Pixel の SignUp を発火
-                rdt('track', 'SignUp');
-                // （必要なら console.log で確認）
-                console.log('Reddit Pixel: SignUp event sent');
-            });
-        });
-    </script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
