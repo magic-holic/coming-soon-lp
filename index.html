@@ -342,6 +342,7 @@
                                         console.log("Email value is:", email);
                                         if ( email !== "" ) {
                                         dataLayer.push({ event: "subscribe_click" });
+                                        rdt("track", "SignUp");
                                         console.log("→ subscribe_click pushed");
                                         } else {
                                         console.log("→ empty, not pushed");
@@ -366,6 +367,23 @@
                 // （必要なら console.log で確認）
                 console.log('Reddit Pixel: SignUp event sent');
             });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const successEl = document.getElementById('mce-success-response');
+            if (!successEl) return;
+
+            const observer = new MutationObserver(() => {
+                if (successEl.style.display !== 'none') {
+                    rdt('track', 'SignUp');
+                    console.log('Reddit Pixel: SignUp event sent (successful)');
+                    observer.disconnect();          // 二重送信防止
+                }
+            });
+
+            observer.observe(successEl, { attributes: true, attributeFilter: ['style'] });
         });
     </script>
 
