@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - MagicHolic</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #8B5CF6;
+            --secondary: #EC4899;
+            --accent: #06B6D4;
+            --dark: #0F172A;
+            --light: #F8FAFC;
+            --gradient: linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #06B6D4 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background: #fff;
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 999;
+            background: rgba(139, 92, 246, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .lang-switcher:hover {
+            background: rgba(139, 92, 246, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: "✦";
+            font-size: 1.5rem;
+        }
+
+        .nav-back {
+            background: var(--gradient);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-back:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.3);
+        }
+
+        /* Main Content */
+        .privacy-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 120px 2rem 4rem;
+        }
+
+        .privacy-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .privacy-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .last-updated {
+            color: #6B7280;
+            font-size: 1rem;
+        }
+
+        .privacy-content {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .privacy-content h2 {
+            font-size: 1.75rem;
+            margin: 2.5rem 0 1rem;
+            color: var(--dark);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #E5E7EB;
+        }
+
+        .privacy-content h3 {
+            font-size: 1.25rem;
+            margin: 2rem 0 1rem;
+            color: var(--dark);
+        }
+
+        .privacy-content p {
+            margin-bottom: 1.5rem;
+            color: #4B5563;
+            line-height: 1.8;
+        }
+
+        .privacy-content ul {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+            color: #4B5563;
+        }
+
+        .privacy-content li {
+            margin-bottom: 0.75rem;
+            line-height: 1.8;
+        }
+
+        .contact-info {
+            background: #F3F4F6;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info h3 {
+            margin-top: 0;
+        }
+
+        .contact-info a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: #F9FAFB;
+            padding: 3rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid #E5E7EB;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .privacy-title {
+                font-size: 2rem;
+            }
+            
+            .privacy-content {
+                padding: 2rem;
+            }
+            
+            .nav-container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Switcher -->
+    <a href="#" class="lang-switcher" onclick="toggleLanguage(); return false;">
+        🌐 <span id="langText">繁體中文</span>
+    </a>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">MagicHolic</a>
+            <a href="index.html" class="nav-back" data-en="← Back to Home" data-zh="← 返回首頁">← Back to Home</a>
+        </div>
+    </nav>
+
+    <!-- Privacy Policy Content -->
+    <div class="privacy-container">
+        <div class="privacy-header">
+            <h1 class="privacy-title" data-en="Privacy Policy" data-zh="隱私權政策">Privacy Policy</h1>
+            <p class="last-updated" data-en="Last Updated: January 2025" data-zh="最後更新：2025年1月">Last Updated: January 2025</p>
+        </div>
+
+        <div class="privacy-content">
+            <p data-en="MagicHolic Inc. ('we', 'our', or 'us') is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application and services." 
+               data-zh="MagicHolic Inc.（「我們」、「我們的」）致力於保護您的隱私。本隱私權政策說明當您使用我們的行動應用程式和服務時，我們如何收集、使用、披露和保護您的資訊。">
+                MagicHolic Inc. ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application and services.
+            </p>
+
+            <h2 data-en="1. Information We Collect" data-zh="1. 我們收集的資訊">1. Information We Collect</h2>
+            
+            <h3 data-en="Personal Information" data-zh="個人資訊">Personal Information</h3>
+            <p data-en="When you register for our services, we may collect:" data-zh="當您註冊我們的服務時，我們可能會收集：">
+                When you register for our services, we may collect:
+            </p>
+            <ul>
+                <li data-en="Email address" data-zh="電子郵件地址">Email address</li>
+                <li data-en="Username" data-zh="用戶名">Username</li>
+                <li data-en="Language preferences" data-zh="語言偏好">Language preferences</li>
+                <li data-en="Device information" data-zh="設備資訊">Device information</li>
+            </ul>
+
+            <h3 data-en="Usage Information" data-zh="使用資訊">Usage Information</h3>
+            <p data-en="We automatically collect certain information when you use our app:" data-zh="當您使用我們的應用程式時，我們會自動收集某些資訊：">
+                We automatically collect certain information when you use our app:
+            </p>
+            <ul>
+                <li data-en="Content viewing history" data-zh="內容觀看歷史">Content viewing history</li>
+                <li data-en="App interaction data" data-zh="應用程式互動數據">App interaction data</li>
+                <li data-en="Performance analytics" data-zh="性能分析">Performance analytics</li>
+                <li data-en="Device and connection information" data-zh="設備和連接資訊">Device and connection information</li>
+            </ul>
+
+            <h2 data-en="2. How We Use Your Information" data-zh="2. 我們如何使用您的資訊">2. How We Use Your Information</h2>
+            <p data-en="We use your information to:" data-zh="我們使用您的資訊來：">We use your information to:</p>
+            <ul>
+                <li data-en="Provide and maintain our services" data-zh="提供和維護我們的服務">Provide and maintain our services</li>
+                <li data-en="Personalize your content experience" data-zh="個性化您的內容體驗">Personalize your content experience</li>
+                <li data-en="Send you updates about new content" data-zh="向您發送有關新內容的更新">Send you updates about new content</li>
+                <li data-en="Improve our app and services" data-zh="改進我們的應用程式和服務">Improve our app and services</li>
+                <li data-en="Comply with legal obligations" data-zh="遵守法律義務">Comply with legal obligations</li>
+            </ul>
+
+            <h2 data-en="3. Information Sharing" data-zh="3. 資訊分享">3. Information Sharing</h2>
+            <p data-en="We do not sell, trade, or rent your personal information. We may share your information only in these circumstances:" 
+               data-zh="我們不會出售、交易或出租您的個人資訊。我們僅在以下情況下分享您的資訊：">
+                We do not sell, trade, or rent your personal information. We may share your information only in these circumstances:
+            </p>
+            <ul>
+                <li data-en="With your consent" data-zh="經您同意">With your consent</li>
+                <li data-en="To comply with legal requirements" data-zh="遵守法律要求">To comply with legal requirements</li>
+                <li data-en="With service providers who assist our operations" data-zh="與協助我們運營的服務提供商">With service providers who assist our operations</li>
+                <li data-en="To protect our rights and safety" data-zh="保護我們的權利和安全">To protect our rights and safety</li>
+            </ul>
+
+            <h2 data-en="4. Data Security" data-zh="4. 數據安全">4. Data Security</h2>
+            <p data-en="We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction." 
+               data-zh="我們實施適當的技術和組織措施，以保護您的個人資訊免受未經授權的訪問、更改、披露或破壞。">
+                We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.
+            </p>
+
+            <h2 data-en="5. Your Rights" data-zh="5. 您的權利">5. Your Rights</h2>
+            <p data-en="You have the right to:" data-zh="您有權：">You have the right to:</p>
+            <ul>
+                <li data-en="Access your personal information" data-zh="訪問您的個人資訊">Access your personal information</li>
+                <li data-en="Correct inaccurate data" data-zh="更正不準確的數據">Correct inaccurate data</li>
+                <li data-en="Request deletion of your data" data-zh="請求刪除您的數據">Request deletion of your data</li>
+                <li data-en="Opt-out of marketing communications" data-zh="選擇退出行銷通訊">Opt-out of marketing communications</li>
+                <li data-en="Data portability" data-zh="數據可攜性">Data portability</li>
+            </ul>
+
+            <h2 data-en="6. Children's Privacy" data-zh="6. 兒童隱私">6. Children's Privacy</h2>
+            <p data-en="Our services are not directed to children under 13. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe we have collected information from your child, please contact us." 
+               data-zh="我們的服務不針對13歲以下的兒童。我們不會故意收集13歲以下兒童的個人資訊。如果您是家長或監護人，並認為我們收集了您孩子的資訊，請與我們聯繫。">
+                Our services are not directed to children under 13. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe we have collected information from your child, please contact us.
+            </p>
+
+            <h2 data-en="7. International Data Transfers" data-zh="7. 國際數據傳輸">7. International Data Transfers</h2>
+            <p data-en="Your information may be transferred to and processed in countries other than your own. We ensure appropriate safeguards are in place for such transfers." 
+               data-zh="您的資訊可能會被傳輸到您所在國家以外的國家並在那裡處理。我們確保為此類傳輸提供適當的保障措施。">
+                Your information may be transferred to and processed in countries other than your own. We ensure appropriate safeguards are in place for such transfers.
+            </p>
+
+            <h2 data-en="8. Changes to This Policy" data-zh="8. 政策變更">8. Changes to This Policy</h2>
+            <p data-en="We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the 'Last Updated' date." 
+               data-zh="我們可能會不時更新本隱私權政策。我們將通過在此頁面上發布新的隱私權政策並更新「最後更新」日期來通知您任何變更。">
+                We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.
+            </p>
+
+            <div class="contact-info">
+                <h3 data-en="Contact Us" data-zh="聯絡我們">Contact Us</h3>
+                <p data-en="If you have any questions about this Privacy Policy, please contact us at:" 
+                   data-zh="如果您對本隱私權政策有任何疑問，請通過以下方式與我們聯繫：">
+                    If you have any questions about this Privacy Policy, please contact us at:
+                </p>
+                <p>
+                    <strong>MagicHolic Inc.</strong><br>
+                    <span data-en="Email:" data-zh="電子郵件：">Email:</span> <a href="mailto:contact@magic-holic.com">contact@magic-holic.com</a><br>
+                    <span data-en="Address:" data-zh="地址：">Address:</span> <span data-en="Shinjuku Sumitomo Building 18F, 2-6-1 Nishi-Shinjuku, Shinjuku-ku, Tokyo 160-0023, Japan" 
+                                                                                        data-zh="〒160-0023 日本東京都新宿區西新宿2丁目6-1 新宿住友大樓18F">Shinjuku Sumitomo Building 18F, 2-6-1 Nishi-Shinjuku, Shinjuku-ku, Tokyo 160-0023, Japan</span>
+                </p>
+            </div>
