@@ -1,230 +1,1105 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 
 <head>
     <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-T7FQ3BDL');</script>
+    <script>(function (w, d, s, l, i) { w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' }); var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f); })(window, document, 'script', 'dataLayer', 'GTM-T7FQ3BDL');</script>
     <!-- End Google Tag Manager -->
 
     <!-- Reddit Pixel -->
     <script>
-        !function (w, d) {
-            if (!w.rdt) {
-                var p = w.rdt = function () { p.sendEvent ? p.sendEvent.apply(p, arguments) : p.callQueue.push(arguments) }; p.callQueue = []; var t = d.createElement("script"); t.src = "https://www.redditstatic.com/ads/pixel.js", t.async = !0; var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(t, s)
-            }
-        }(window, document);
-        rdt('init', 'a2_h22lqt36lxsh');
-        rdt('track', 'PageVisit');
+        !function (w, d) { if (!w.rdt) { var p = w.rdt = function () { p.sendEvent ? p.sendEvent.apply(p, arguments) : p.callQueue.push(arguments) }; p.callQueue = []; var t = d.createElement("script"); t.src = "https://www.redditstatic.com/ads/pixel.js", t.async = !0; var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(t, s); } }(window, document);
+        rdt('init', 'a2_h22lqt36lxsh'); rdt('track', 'PageVisit');
     </script>
     <!-- End Reddit Pixel -->
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Coming Soon …</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MagicHolic - Japan's Stories, Animated for All</title>
     <style>
-        /* --- ページ共通 --- */
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
 
-        /* ロゴ位置調整 */
-        .site-logo {
-            position: absolute;
-            /* 画面に固定 */
-            top: 20px;
-            /* 上からの余白 */
-            left: 50%;
-            /* 左端を画面中央に */
-            transform: translateX(-50%);
-            /* 自身の幅の半分だけ左にずらして中央に */
-            z-index: 1000;
-            /* 他要素より前面に */
+        :root {
+            --primary: #8B5CF6;
+            --secondary: #EC4899;
+            --accent: #06B6D4;
+            --dark: #0F172A;
+            --light: #F8FAFC;
+            --gradient: linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #06B6D4 100%);
+            --gradient-dark: linear-gradient(135deg, #6D28D9 0%, #BE185D 50%, #0891B2 100%);
+            --success-green: #008000;
         }
 
-        /* ロゴ画像サイズ */
-        .site-logo img {
-            display: block;
-            height: 90px;
-            width: auto;
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            margin: 0;
-            padding-top: 120px;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            /* 上部に寄せる */
-            justify-content: flex-start;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
             background: #000;
-            color: #fff;
-            font-family: "Helvetica Neue", Arial, sans-serif;
         }
 
-        /* --- 全体を包むコンテナ --- */
-        .wrapper {
+        .lang-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .lang-switcher:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .lang-switcher {
+                top: auto;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 0 20px;
-            /* 上から余白を追加して下方向へオフセット (値を小さくしてさらに上に寄せる) */
-            margin-bottom: 15vh;
+            height: 100%;
+            background: #000;
+            z-index: 9998;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s, visibility 0.5s;
         }
 
-        .wrapper h1 {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
-            font-weight: normal;
+        .preloader.fade-out {
+            opacity: 0;
+            visibility: hidden;
         }
 
-        /* --- カウントダウン部分を包むコンテナ --- */
-        .countdown-wrapper {
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 3px solid transparent;
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        nav {
+            position: fixed;
             width: 100%;
-            max-width: 700px;
+            top: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-container {
+            max-width: 1400px;
             margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            padding-right: 140px;
         }
 
-        /* --- カウントダウン --- */
-        .countdown {
+        @media (max-width: 768px) {
+            .nav-container {
+                padding-right: 2rem;
+            }
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
             display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 10px;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo::before {
+            content: "✦";
+            font-size: 1.5rem;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(1.2) rotate(180deg);
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .nav-links a:hover::after {
             width: 100%;
         }
 
-        /* --- 各ユニット --- */
-        .unit {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            flex: 1;
+        .nav-cta {
+            background: var(--gradient);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
         }
 
-        /* --- 2桁の数字を横並び --- */
-        .digits {
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+        }
+
+        .hero {
+            min-height: 100vh;
             display: flex;
-            gap: 8px;
+            align-items: center;
+            position: relative;
+            background: #000;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
+            z-index: 1;
         }
 
-        /* --- 数字カード --- */
-        .box {
-            background: #3e3e3e;
-            /* 均等に幅を分配し、最小サイズも0に */
-            flex: 1 1 0;
-            min-width: 0;
-            aspect-ratio: 0.7;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 4px;
-            /* フォントサイズを幅に合わせて可変に */
-            font-size: clamp(1rem, 7vw, 5rem);
-            font-weight: bold;
-            color: #fff;
-        }
-
-        /* --- 単位ラベル --- */
-        .label {
-            margin-top: 8px;
-            font-size: clamp(0.6rem, 2vw, 1em);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #ddd;
-            font-weight: normal;
-        }
-
-        /* --- コロンセパレータ --- */
-        .sep {
-            flex: none;
-            /* コロンも可変に */
-            font-size: clamp(1rem, 5vw, 3rem);
-            color: #fff;
-            user-select: none;
-            align-self: center;
-            margin-bottom: 20px;
-        }
-
-        /* 1) Mailchimp が埋め込むインラインスタイルをまるごと無効化 */
-        #mc_embed_shell>style[type="text/css"] {
-            display: none !important;
-        }
-
-        /* 2) フォーム全体を中央寄せ・幅100%に */
-        #mc_embed_shell {
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 600px;
-            margin: 30px auto 0;
-            text-align: center;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.2) 50%, rgba(6, 182, 212, 0.2) 100%);
+            z-index: 2;
         }
 
-        /* 3) 内部の #mc_embed_signup をインラインブロックにしてテキスト左寄せ */
-        #mc_embed_signup {
-            display: inline-block !important;
-            width: 100% !important;
-            background: #000 !important;
-            padding: 20px !important;
-            border-radius: 4px;
-            text-align: left;
+        .animated-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.3;
         }
 
-        /* 4) ラベルと入力欄を横並びに */
-        #mc_embed_signup .mc-field-group {
-            display: block !important;
-            justify-content: flex-start;
+        .animated-bg::before,
+        .animated-bg::after {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: var(--gradient);
+            border-radius: 50%;
+            filter: blur(100px);
+            animation: float-bg 20s ease-in-out infinite;
+        }
+
+        .animated-bg::before {
+            top: -300px;
+            right: -300px;
+        }
+
+        .animated-bg::after {
+            bottom: -300px;
+            left: -300px;
+            animation-delay: 10s;
+        }
+
+        @keyframes float-bg {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(-50px, 50px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(50px, -50px) scale(0.9);
+            }
+        }
+
+        .hero-container {
+            position: relative;
+            z-index: 3;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
             align-items: center;
-            gap: 10px;
+        }
+
+        .hero-content {
+            animation: fadeInLeft 1s ease;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.2);
+            color: #A78BFA;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #fff 0%, #A78BFA 50%, #F472B6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-content .description {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
             flex-wrap: wrap;
         }
 
-        /* 5) 入力欄とボタンのサイズ感を調整 */
-        #mc_embed_signup input.email {
-            display: block !important;
-            width: 100% !important;
-            margin-bottom: 16px;
-            flex: 1 1 auto;
-            min-width: 200px;
-            background: #333 !important;
-            color: #fff !important;
-            border: 1px solid #555 !important;
-            padding: 8px !important;
-            margin-top: 4px;
+        .btn-download {
+            background: var(--gradient);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
         }
 
-        #mc_embed_signup input.button {
-            padding: 0 16px !important;
-            height: 40px !important;
-            line-height: 40px !important;
-            background: #555 !important;
-            color: #fff !important;
-            border: none !important;
+        .btn-download:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.4);
+        }
+
+        .btn-icon {
+            font-size: 1.3rem;
+        }
+
+        .btn-watch {
+            background: transparent;
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-watch:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-3px);
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            animation: fadeInRight 1s ease;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .phone-wrapper {
+            position: relative;
+            transform-style: preserve-3d;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotateY(-10deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotateY(10deg);
+            }
+        }
+
+        .phone-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, transparent 70%);
+            filter: blur(60px);
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+
+            0%,
+            100% {
+                opacity: 0.6;
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
+
+        .phone-mockup {
+            width: 320px;
+            height: 640px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border-radius: 40px;
+            padding: 8px;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            border-radius: 32px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .app-preview {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background: #000;
+            border-radius: 32px;
+            overflow: hidden;
+        }
+
+        .app-preview-header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .app-preview-logo {
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .app-preview-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, transparent 20%, transparent 80%, rgba(0, 0, 0, 0.5) 100%);
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .app-preview-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            display: flex;
+            justify-content: space-around;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 15px;
+            z-index: 10;
+            pointer-events: auto;
+        }
+
+        .control-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .control-icon:hover {
+            background: var(--gradient);
+            transform: scale(1.1);
+        }
+
+        .features-section {
+            padding: 8rem 2rem;
+            background: #0A0A0A;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 4rem auto 0;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(139, 92, 246, 0.05);
+            border-color: rgba(139, 92, 246, 0.3);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.1);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: rotateY(180deg);
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .feature-description {
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.8;
+        }
+
+        .how-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(to bottom, #0A0A0A 0%, #0F172A 100%);
+            position: relative;
+        }
+
+        .how-content {
+            max-width: 1200px;
+            margin: 4rem auto 0;
+        }
+
+        .how-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            position: relative;
+        }
+
+        @media (min-width: 900px) {
+            .how-steps::before {
+                content: '';
+                position: absolute;
+                top: 60px;
+                left: 25%;
+                width: 50%;
+                height: 2px;
+                background: linear-gradient(to right, transparent, rgba(139, 92, 246, 0.3), transparent);
+            }
+        }
+
+        .how-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0 auto 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .how-step:hover .step-number {
+            transform: scale(1.1);
+            background: var(--gradient);
+            color: white;
+            border-color: transparent;
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .step-description {
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.8;
+        }
+
+        .showcase-section {
+            padding: 8rem 2rem;
+            background: #000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .showcase-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .showcase-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 9/16;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .showcase-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #2a1a3e 0%, #3d2451 100%);
+            z-index: 1;
+        }
+
+        .showcase-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+            z-index: 3;
+        }
+
+        .showcase-title {
+            font-size: 1.25rem;
+            color: white;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .showcase-info {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.5rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .showcase-item:hover .play-button {
+            opacity: 1;
+        }
+
+        .final-cta-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .cta-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 3rem;
+        }
+
+        .waitlist-form {
+            max-width: 500px;
+            margin: 3rem auto;
+        }
+
+        .waitlist-form>div {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .waitlist-form input[type="email"] {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .waitlist-form input[type="email"]:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .waitlist-form input[type="email"]::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .waitlist-form button {
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .waitlist-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+        }
+
+        .launch-info {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1rem;
+        }
+
+        footer {
+            background: #000;
+            padding: 4rem 2rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: none;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.9rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: rgba(236, 72, 153, 0.2);
+            color: #F472B6;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
             cursor: pointer;
         }
 
-        /* 1) アスタリスクだけ赤に */
-        #mc_embed_signup .asterisk {
-            color: red !important;
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-nav-toggle {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-visual {
+                margin-top: 3rem;
+            }
+
+            .how-steps::before {
+                display: none;
+            }
+
+            .showcase-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .waitlist-form>div {
+                flex-direction: column;
+            }
         }
 
-        /* 2) ラベルをブロック表示にして、必ず下で改行 */
-        #mc_embed_signup label {
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0A0A0A;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gradient-dark);
+        }
+
+        /* Mailchimp 成功メッセージのスタイル調整 */
+        #mc_embed_signup .response#mce-success-response {
+            color: #ffffff !important;
+            font-weight: bold !important;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 10px auto;
+            font-size: 1rem;
+            max-width: 400px;
             display: block !important;
-            margin-bottom: 8px;
+            text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
         }
 
-        /* “* indicates required” を非表示に */
-        #mc_embed_signup .indicates-required {
+        #mc_embed_signup .response#mce-error-response {
             display: none !important;
+            /* Hide the error response */
         }
     </style>
-
 </head>
 
 <body>
@@ -233,147 +1108,484 @@
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <div class="site-logo">
-        <img src="logo-202408-2.png" alt="Company Logo">
+    <!-- Language Switcher -->
+    <a href="#" class="lang-switcher" onclick="toggleLanguage(); return false;">🌐 <span id="langText">繁體中文</span></a>
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="loader"></div>
     </div>
 
-    <div class="wrapper">
-        <h1>Coming Soon …</h1>
-        <div class="countdown-wrapper">
-            <div class="countdown" id="cd"></div>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">MagicHolic</div>
+            <ul class="nav-links">
+                <li><a href="#features" data-en="Features" data-zh="特色功能">Features</a></li>
+                <li><a href="#how" data-en="How It Works" data-zh="使用方式">How It Works</a></li>
+                <li><a href="#showcase" data-en="Showcase" data-zh="作品展示">Showcase</a></li>
+                <li><a href="#waitlist" class="nav-cta" data-en="Join Waitlist" data-zh="加入等候名單">Join Waitlist</a></li>
+            </ul>
+            <button class="mobile-nav-toggle">☰</button>
+        </div>
+    </nav>
 
-            <script>
-                const goal = new Date("2025-06-25T00:00:00").getTime();
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="animated-bg"></div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge" data-en="🚀 Coming Soon" data-zh="🚀 即將推出">🚀 Coming Soon</div>
+                <h1 data-en="Japan's stories,<br>animated for all." data-zh="日本故事，<br>動畫呈現給所有人。">Japan's
+                    stories,<br>animated for all.</h1>
+                <p class="subtitle" data-en="Experience manga like never before through stunning short animations"
+                    data-zh="透過精彩的短篇動畫，體驗前所未有的漫畫世界">Experience manga like never before through stunning short animations
+                </p>
+                <p class="description"
+                    data-en="Dive into a world where your favorite manga comes to life through stunning short animations. Available in multiple languages, right at your fingertips."
+                    data-zh="進入一個您喜愛的漫畫透過精彩短篇動畫活躍起來的世界。支援多種語言，觸手可及。">
+                    Dive into a world where your favorite manga comes to life through stunning short animations.
+                    Available in multiple languages, right at your fingertips.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#waitlist" class="btn-download">
+                        <span class="btn-icon">✨</span>
+                        <span data-en="Join Waitlist" data-zh="加入等候名單">Join Waitlist</span>
+                    </a>
+                    <a href="https://youtube.com/shorts/BGpVkVGtIpY" target="_blank" rel="noopener noreferrer"
+                        class="btn-watch">
+                        <span class="btn-icon">▶️</span>
+                        <span data-en="Watch Demo" data-zh="觀看演示">Watch Demo</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="phone-wrapper">
+                    <div class="phone-glow"></div>
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="app-preview">
+                                <div class="app-preview-header">
+                                    <div class="app-preview-logo">✦ MagicHolic</div>
+                                </div>
+                                <div class="app-preview-content">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/BGpVkVGtIpY?autoplay=1&mute=1&controls=0&loop=1&playlist=BGpVkVGtIpY&playsinline=1&rel=0&showinfo=0&modestbranding=1"
+                                        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen
+                                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 32px;"></iframe>
+                                    <div class="video-overlay"></div>
+                                </div>
+                                <div class="app-preview-controls">
+                                    <div class="control-icon">❤️</div>
+                                    <div class="control-icon">💬</div>
+                                    <div class="control-icon">↗️</div>
+                                    <div class="control-icon">🔖</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                function pad(n) {
-                    return n.toString().padStart(2, "0");
-                }
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <div class="section-badge" data-en="Features" data-zh="特色功能">Features</div>
+                <h2 class="section-title" data-en="Why MagicHolic?" data-zh="為什麼選擇 MagicHolic？">Why MagicHolic?</h2>
+                <p class="section-subtitle" data-en="Discover a new way to enjoy manga stories" data-zh="探索享受漫畫故事的全新方式">
+                    Discover a new way to enjoy manga stories</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <div class="feature-icon">🎬</div>
+                    <h3 class="feature-title" data-en="Short Animations" data-zh="短篇動畫">Short Animations</h3>
+                    <p class="feature-description"
+                        data-en="Bite-sized anime content perfect for your daily commute or break time. Each episode is optimized for mobile viewing."
+                        data-zh="適合通勤或休息時間的精簡動畫內容。每集都針對行動裝置觀看進行優化。">Bite-sized anime content perfect for your daily
+                        commute or break time. Each episode is optimized for mobile viewing.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon">🌍</div>
+                    <h3 class="feature-title" data-en="Multi-Language" data-zh="多語言支援">Multi-Language</h3>
+                    <p class="feature-description"
+                        data-en="Enjoy content in your preferred language with seamless translations and dubbing for a global experience."
+                        data-zh="透過流暢的翻譯和配音，以您偏好的語言享受內容，獲得全球化體驗。">Enjoy content in your preferred language with seamless
+                        translations and dubbing for a global experience.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon">📱</div>
+                    <h3 class="feature-title" data-en="Mobile First" data-zh="行動優先">Mobile First</h3>
+                    <p class="feature-description"
+                        data-en="Designed specifically for smartphones with vertical viewing format, just like your favorite social media apps."
+                        data-zh="專為智慧型手機設計的直式觀看格式，就像您喜愛的社群媒體應用程式。">Designed specifically for smartphones with vertical
+                        viewing format, just like your favorite social media apps.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon">🔥</div>
+                    <h3 class="feature-title" data-en="Fresh Content" data-zh="新鮮內容">Fresh Content</h3>
+                    <p class="feature-description"
+                        data-en="New episodes added regularly from a growing library of licensed manga titles from Japan's top publishers."
+                        data-zh="定期新增來自日本頂級出版社授權漫畫作品庫的新集數。">New episodes added regularly from a growing library of
+                        licensed manga titles from Japan's top publishers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                function update() {
-                    const diff = goal - Date.now();
-                    const container = document.getElementById("cd");
+    <!-- How It Works Section -->
+    <section class="how-section" id="how">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <div class="section-badge" data-en="How It Works" data-zh="使用方式">How It Works</div>
+                <h2 class="section-title" data-en="Get Ready in 3 Steps" data-zh="3步驟準備就緒">Get Ready in 3 Steps</h2>
+                <p class="section-subtitle" data-en="Join us on the journey to revolutionize manga"
+                    data-zh="加入我們，一起革新漫畫世界">Join us on the journey to revolutionize manga</p>
+            </div>
+            <div class="how-content">
+                <div class="how-steps">
+                    <div class="how-step reveal">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title" data-en="Join the Waitlist" data-zh="加入等候名單">Join the Waitlist</h3>
+                        <p class="step-description"
+                            data-en="Sign up for early access to MagicHolic. Be among the first to experience the future of manga."
+                            data-zh="註冊以獲得MagicHolic的搶先體驗。成為首批體驗漫畫未來的用戶。">Sign up for early access to MagicHolic. Be
+                            among the first to experience the future of manga.</p>
+                    </div>
+                    <div class="how-step reveal">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title" data-en="Explore Sample Titles" data-zh="探索範例作品">Explore Sample Titles
+                        </h3>
+                        <p class="step-description"
+                            data-en="Check out our sample animations to see what MagicHolic is all about. Full library coming at launch!"
+                            data-zh="查看我們的範例動畫，了解MagicHolic的特色。完整作品庫將在正式推出時上線！">Check out our sample animations to see
+                            what MagicHolic is all about. Full library coming at launch!</p>
+                    </div>
+                    <div class="how-step reveal">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title" data-en="Get Notified" data-zh="接收通知">Get Notified</h3>
+                        <p class="step-description"
+                            data-en="Be the first to know when we launch! Early members get exclusive benefits and special access."
+                            data-zh="成為第一批知道我們推出的用戶！早期會員可獲得獨家優惠和特殊權限。">Be the first to know when we launch! Early
+                            members get exclusive benefits and special access.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                    if (diff <= 0) {
-                        container.innerHTML = '<h2 style="color:#fff">Launched!</h2>';
-                        clearInterval(timer);
-                        return;
+    <!-- Showcase Section -->
+    <section class="showcase-section" id="showcase">
+        <div class="showcase-container">
+            <div class="section-header reveal">
+                <div class="section-badge" data-en="Showcase" data-zh="作品展示">Showcase</div>
+                <h2 class="section-title" data-en="Sample Showcase" data-zh="範例展示">Sample Showcase</h2>
+                <p class="section-subtitle" data-en="Preview what's coming to MagicHolic" data-zh="預覽即將登陸MagicHolic的內容">
+                    Preview what's coming to MagicHolic</p>
+            </div>
+            <div class="showcase-grid">
+                <div class="showcase-item reveal">
+                    <div class="showcase-content">
+                        <h3 class="showcase-title" data-en="Coming Soon" data-zh="即將推出">Coming Soon</h3>
+                    </div>
+                </div>
+                <div class="showcase-item reveal">
+                    <div class="showcase-content">
+                        <h3 class="showcase-title" data-en="Coming Soon" data-zh="即將推出">Coming Soon</h3>
+                    </div>
+                </div>
+                <div class="showcase-item reveal">
+                    <div class="showcase-content">
+                        <h3 class="showcase-title" data-en="Coming Soon" data-zh="即將推出">Coming Soon</h3>
+                    </div>
+                </div>
+                <div class="showcase-item reveal">
+                    <div class="showcase-content">
+                        <h3 class="showcase-title" data-en="Coming Soon" data-zh="即將推出">Coming Soon</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="final-cta-section" id="waitlist">
+        <div class="cta-content reveal">
+            <h2 class="cta-title" data-en="Be the First to Experience MagicHolic" data-zh="成為首批體驗MagicHolic的用戶">Be the
+                First to Experience MagicHolic</h2>
+            <p class="cta-subtitle" data-en="Join our exclusive waitlist for early access" data-zh="加入我們的獨家等候名單，獲得搶先體驗">
+                Join our exclusive waitlist for early access</p>
+            <div id="mc_embed_shell" style="max-width: 500px; margin: 3rem auto;">
+                <style type="text/css">
+                    #mc_embed_signup {
+                        background: transparent !important;
+                        clear: left;
+                        width: 100% !important;
                     }
 
-                    const daysStr = pad(Math.floor(diff / (1000 * 60 * 60 * 24)));
-                    const hoursStr = pad(Math.floor((diff / (1000 * 60 * 60)) % 24));
-                    const minutesStr = pad(Math.floor((diff / (1000 * 60)) % 60));
-                    const secondsStr = pad(Math.floor((diff / 1000) % 60));
+                    #mc_embed_signup form {
+                        padding: 0 !important;
+                        margin: 0 !important;
+                    }
 
-                    container.innerHTML = `
-        <div class="unit">
-          <div class="digits">
-            <div class="box">${daysStr.charAt(0)}</div>
-            <div class="box">${daysStr.charAt(1)}</div>
-          </div>
-          <div class="label">Days</div>
-        </div>
-        <div class="sep">:</div>
-        <div class="unit">
-          <div class="digits">
-            <div class="box">${hoursStr.charAt(0)}</div>
-            <div class="box">${hoursStr.charAt(1)}</div>
-          </div>
-          <div class="label">Hours</div>
-        </div>
-        <div class="sep">:</div>
-        <div class="unit">
-          <div class="digits">
-            <div class="box">${minutesStr.charAt(0)}</div>
-            <div class="box">${minutesStr.charAt(1)}</div>
-          </div>
-          <div class="label">Minutes</div>
-        </div>
-        <div class="sep">:</div>
-        <div class="unit">
-          <div class="digits">
-            <div class="box">${secondsStr.charAt(0)}</div>
-            <div class="box">${secondsStr.charAt(1)}</div>
-          </div>
-          <div class="label">Seconds</div>
-        </div>
-      `;
-                }
+                    #mc_embed_signup h2 {
+                        display: none !important;
+                    }
 
-                update();
-                const timer = setInterval(update, 1000);
-            </script>
-        </div>
+                    #mc_embed_signup .indicates-required {
+                        display: none !important;
+                    }
 
-        <div id="mc_embed_shell">
-            <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
-            <style type="text/css">
-                #mc_embed_signup {
-                    background: #fff;
-                    false;
-                    clear: left;
-                    font: 14px Helvetica, Arial, sans-serif;
-                    width: 600px;
-                }
+                    #mc_embed_signup .mc-field-group {
+                        width: 100% !important;
+                        padding: 0 !important;
+                        margin: 0 !important;
+                    }
 
-                /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
-           We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-            </style>
-            <div id="mc_embed_signup">
-                <form
-                    action="https://magic-holic.us5.list-manage.com/subscribe/post?u=f573e22ed3d5bfd1437a97aed&amp;id=da2f06b832&amp;f_id=007c51e9f0"
-                    method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
-                    target="_blank">
-                    <div id="mc_embed_signup_scroll">
-                        <h2>Get early access to information</h2>
-                        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
-                        <div class="mc-field-group"><label for="mce-EMAIL">Email Address <span
-                                    class="asterisk">*</span></label><input type="email" name="EMAIL"
-                                class="required email" id="mce-EMAIL" required="" value=""></div>
-                        <div id="mce-responses" class="clear">
-                            <div class="response" id="mce-error-response" style="display: none;"></div>
-                            <div class="response" id="mce-success-response" style="display: none;"></div>
+                    #mc_embed_signup .mc-field-group label {
+                        display: none !important;
+                    }
+
+                    #mc_embed_signup input[type="email"] {
+                        width: 100% !important;
+                        padding: 1rem 1.5rem !important;
+                        border-radius: 50px !important;
+                        border: 2px solid rgba(255, 255, 255, 0.3) !important;
+                        background: rgba(255, 255, 255, 0.1) !important;
+                        color: white !important;
+                        font-size: 1.1rem !important;
+                        transition: all 0.3s ease !important;
+                        box-sizing: border-box !important;
+                        margin: 0 !important;
+                    }
+
+                    #mc_embed_signup input[type="email"]:focus {
+                        outline: none !important;
+                        background: rgba(255, 255, 255, 0.2) !important;
+                        border-color: rgba(255, 255, 255, 0.5) !important;
+                    }
+
+                    #mc_embed_signup input[type="email"]::placeholder {
+                        color: rgba(255, 255, 255, 0.5) !important;
+                    }
+
+                    #mc_embed_signup .button {
+                        background: var(--gradient) !important;
+                        color: white !important;
+                        padding: 1rem 2.5rem !important;
+                        border-radius: 50px !important;
+                        border: none !important;
+                        font-size: 1.1rem !important;
+                        font-weight: 600 !important;
+                        cursor: pointer !important;
+                        transition: all 0.3s ease !important;
+                        width: auto !important;
+                        height: auto !important;
+                        margin: 0 !important;
+                    }
+
+                    #mc_embed_signup .button:hover {
+                        transform: translateY(-2px) !important;
+                        box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4) !important;
+                    }
+
+                    #mc_embed_signup_scroll {
+                        display: flex !important;
+                        gap: 1rem !important;
+                        align-items: center !important;
+                        flex-wrap: wrap !important;
+                        justify-content: center !important;
+                    }
+
+                    #mc_embed_signup .clear {
+                        display: inline-block !important;
+                        clear: none !important;
+                    }
+
+                    @media (max-width: 768px) {
+                        #mc_embed_signup_scroll {
+                            flex-direction: column !important;
+                        }
+
+                        #mc_embed_signup input[type="email"] {
+                            width: 100% !important;
+                        }
+
+                        #mc_embed_signup .button {
+                            width: 100% !important;
+                        }
+                    }
+                </style>
+                <div id="mc_embed_signup">
+                    <form
+                        action="https://magic-holic.us5.list-manage.com/subscribe/post?u=f573e22ed3d5bfd1437a97aed&id=da2f06b832&f_id=007c51e9f0"
+                        method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
+                        target="_blank">
+                        <div id="mc_embed_signup_scroll">
+                            <div class="mc-field-group">
+                                <label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label>
+                                <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required=""
+                                    value="" placeholder="Enter your email">
+                            </div>
+                            <div id="mce-responses" class="clear">
+                                <div class="response" id="mce-success-response" style="display: none;"></div>
+                            </div>
+                            <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                                <input type="text" name="b_f573e22ed3d5bfd1437a97aed_da2f06b832" tabindex="-1" value="">
+                            </div>
+                            <div class="clear">
+                                <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button"
+                                    value="Get Early Access"
+                                    onclick='(function(){var email=document.getElementById("mce-EMAIL").value.trim();console.log("Email value is:",email);if(email!==""){dataLayer.push({event:"subscribe_click"});console.log("→ subscribe_click pushed");}else{console.log("→ empty, not pushed");}})();'>
+                            </div>
                         </div>
-                        <div aria-hidden="true" style="position: absolute; left: -5000px;"><input type="text"
-                                name="b_f573e22ed3d5bfd1437a97aed_da2f06b832" tabindex="-1" value=""></div>
-                        <div class="clear"><input type="submit" name="subscribe" id="mc-embedded-subscribe"
-                                class="button" value="Subscribe" onclick='
-                                    (function(){
-                                        var email = document.getElementById("mce-EMAIL").value.trim();
-                                        console.log("Email value is:", email);
-                                        if ( email !== "" ) {
-                                        dataLayer.push({ event: "subscribe_click" });
-                                        console.log("→ subscribe_click pushed");
-                                        } else {
-                                        console.log("→ empty, not pushed");
-                                        }
-                                    })();
-                                    '></div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
-            <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
-            <script
-                type="text/javascript">(function ($) { window.fnames = new Array(); window.ftypes = new Array(); fnames[0] = 'EMAIL'; ftypes[0] = 'email'; fnames[1] = 'FNAME'; ftypes[1] = 'text'; }(jQuery)); var $mcj = jQuery.noConflict(true);</script>
+            <p class="launch-info" data-en="🎁 Exclusive benefits for early members • 🚀 Be the first to know"
+                data-zh="🎁 早期會員獨家優惠 • 🚀 搶先獲得最新消息">
+                🎁 Exclusive benefits for early members • 🚀 Be the first to know
+            </p>
         </div>
-    </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">MagicHolic</div>
+            <div class="footer-links">
+                <a href="https://magic-holic.com/" data-en="About" data-zh="關於我們">About</a>
+                <a href="privacy.html" data-en="Privacy" data-zh="隱私權">Privacy</a>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 MagicHolic Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const successEl = document.getElementById('mce-success-response');
-            if (!successEl) return;
+        // Preloader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').classList.add('fade-out');
+            }, 500);
+        });
 
-            const observer = new MutationObserver(() => {
-                if (successEl.style.display !== 'none') {
+        // Language toggle functionality
+        let currentLang = 'en'; // Ensure currentLang is initialized
+
+        function toggleLanguage() {
+            const langText = document.getElementById('langText');
+            const elements = document.querySelectorAll('[data-en], [data-zh]');
+
+            if (currentLang === 'en') { // Changed = to === for comparison
+                currentLang = 'zh';
+                langText.textContent = 'English';
+                document.documentElement.lang = 'zh-TW';
+
+                elements.forEach(element => {
+                    if (element.hasAttribute('data-zh')) {
+                        if (element.tagName === 'H1' || element.innerHTML.includes('<br>')) {
+                            element.innerHTML = element.getAttribute('data-zh');
+                        } else {
+                            element.textContent = element.getAttribute('data-zh');
+                        }
+                    }
+                });
+
+                const emailInput = document.querySelector('.waitlist-form input[type="email"]');
+                if (emailInput) emailInput.placeholder = '輸入您的電子郵件';
+                const submitButton = document.getElementById('mc-embedded-subscribe');
+                if (submitButton) submitButton.value = '獲得搶先體驗';
+            } else {
+                currentLang = 'en';
+                langText.textContent = '繁體中文';
+                document.documentElement.lang = 'en';
+
+                elements.forEach(element => {
+                    if (element.hasAttribute('data-en')) {
+                        if (element.tagName === 'H1' || element.innerHTML.includes('<br>')) {
+                            element.innerHTML = element.getAttribute('data-en');
+                        } else {
+                            element.textContent = element.getAttribute('data-en');
+                        }
+                    }
+                });
+
+                const emailInput = document.querySelector('.waitlist-form input[type="email"]');
+                if (emailInput) emailInput.placeholder = 'Enter your email';
+                const submitButton = document.getElementById('mc-embedded-subscribe');
+                if (submitButton) submitButton.value = 'Get Early Access';
+            }
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Reveal animation
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Mobile navigation toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            if (mobileNavToggle && navLinks) {
+                mobileNavToggle.addEventListener('click', () => {
+                    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+                    navLinks.style.position = 'absolute';
+                    navLinks.style.top = '100%';
+                    navLinks.style.left = '0';
+                    navLinks.style.right = '0';
+                    navLinks.style.background = 'rgba(0, 0, 0, 0.95)';
+                    navLinks.style.flexDirection = 'column';
+                    navLinks.style.padding = '2rem';
+                    navLinks.style.borderTop = '1px solid rgba(255, 255, 255, 0.1)';
+                });
+            } else {
+                console.error('mobileNavToggle or navLinks not found in the DOM');
+            }
+        });
+
+        // Mailchimp success tracking with Reddit Pixel
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('mc-embedded-subscribe-form');
+            form.addEventListener('submit', () => {
+                // フォーム送信完了後に success-response が出てくるので、
+                // 少し遅延をおいて実行
+                setTimeout(() => {
                     rdt('track', 'SignUp');
                     console.log('Reddit SignUp successful');
-                    observer.disconnect();          // 二重送信防止
-                }
+                }, 500);
             });
-
-            observer.observe(successEl, { attributes: true, attributeFilter: ['style'] });
         });
     </script>
-
+    <!-- Mailchimp Scripts -->
+    <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+    <script type="text/javascript">
+        (function ($) { window.fnames = new Array(); window.ftypes = new Array(); fnames[0] = 'EMAIL'; ftypes[0] = 'email'; fnames[1] = 'FNAME'; ftypes[1] = 'text'; }(jQuery));
+        var $mcj = jQuery.noConflict(true);
+    </script>
 </body>
 
 </html>
