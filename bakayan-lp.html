@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【バカヤン】もし元とび職の不良が世界の名門大学に入学したら・・・こうなった。カルフォルニア大学バークレー校、通称UCバークレーでの「ぼくのやったこと」</title>
+    <meta name="description" content="13歳で逮捕された少年が世界TOP10大学に合格！感動の実話ベース短編動画。メール登録で全3話無料視聴。">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #0a0a0a;
+            min-height: 100vh;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+
+        @media (min-width: 768px) {
+            .layout {
+                grid-template-columns: 1fr;
+                min-height: 100vh;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ヘッダーセクション - ReelShort風 */
+        .header-section {
+            background: #0a0a0a;
+            padding: 30px 20px;
+            display: flex;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 767px) {
+            .header-section {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+                padding: 20px;
+            }
+        }
+
+        .header-video {
+            flex-shrink: 0;
+        }
+
+        .header-video .video-player {
+            width: 250px;
+            max-width: 250px;
+            aspect-ratio: 9/16;
+            background: #1a1a1a;
+            border-radius: 15px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            overflow: hidden;
+            border: 2px solid #2a2a2a;
+        }
+
+        @media (max-width: 767px) {
+            .header-video .video-player {
+                width: 280px;
+                max-width: 280px;
+            }
+        }
+
+        .header-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .header-info .title {
+            font-size: clamp(24px, 4vw, 32px);
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: #ffffff;
+            line-height: 1.2;
+        }
+
+        .header-stats {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        .header-stat {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            color: #cccccc;
+        }
+
+        .header-stat.liked {
+            color: #ec4899;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #cccccc;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #FF6B35;
+        }
+
+        .header-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .header-tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            color: #cccccc;
+            font-weight: 500;
+        }
+
+        .header-tag.featured {
+            background: linear-gradient(135deg, #ec4899 0%, #f59e0b 100%);
+            color: white;
+            border-color: transparent;
+        }
+
+        /* 動画セクション */
+        .video-player {
+            width: 100%;
+            max-width: 300px;
+            aspect-ratio: 9/16;
+            background: #1a1a1a;
+            border-radius: 20px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            overflow: hidden;
+            border: 2px solid #2a2a2a;
+        }
+
+        .video-player:hover {
+            transform: scale(1.02);
+        }
+
+        /* サムネイル画像 */
+        .video-thumbnail {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), #2a2a2a;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: #FF6B35;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .play-button:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 6px 30px rgba(255, 107, 53, 0.6);
+        }
+
+        .play-icon {
+            width: 0;
+            height: 0;
+            border-left: 20px solid white;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            margin-left: 4px;
+        }
+
+        .episode-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .video-duration {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .video-stats {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* コンテンツセクション */
+        .content {
+            padding: 30px 20px;
+            background: #0a0a0a;
+        }
+
+        @media (min-width: 768px) {
+            .content {
+                padding: 40px 30px;
+                max-height: 100vh;
+                overflow-y: auto;
+            }
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .title {
+            font-size: clamp(20px, 4vw, 28px);
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #ec4899 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: clamp(14px, 3vw, 16px);
+            color: #cccccc;
+            margin-bottom: 20px;
+        }
+
+        .genre-tags {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            color: #cccccc;
+            font-weight: 500;
+        }
+
+        .tag.featured {
+            background: linear-gradient(135deg, #ec4899 0%, #f59e0b 100%);
+            color: white;
+            border-color: transparent;
+        }
+
+        /* メール登録フォーム - 最優先表示 */
+        .registration-form {
+            background: rgba(255, 255, 255, 0.02);
+            border: 2px solid transparent;
+            background-image: linear-gradient(#0a0a0a, #0a0a0a), linear-gradient(135deg, #6366f1 0%, #ec4899 50%, #f59e0b 100%);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #ec4899 0%, #f59e0b 100%);
+            color: white;
+            padding: 4px 16px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .form-title {
+            background: linear-gradient(135deg, #ec4899 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: clamp(18px, 4vw, 22px);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .form-subtitle {
+            color: #cccccc;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.03);
+            color: #ffffff;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #6366f1;
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .form-input::placeholder {
+            color: #999999;
+        }
+
+        .form-submit {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .form-submit:hover {
+            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.5);
+        }
+
+        .form-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .privacy-notice {
+            font-size: 12px;
+            color: #999999;
+            margin-top: 12px;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        /* ベネフィットセクション */
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 20px 15px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            background: rgba(99, 102, 241, 0.05);
+            border-color: #6366f1;
+            transform: translateY(-2px);
+        }
+
+        .benefit-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .benefit-text {
+            font-size: 14px;
+            color: #ffffff;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+
+        /* 言語切り替え */
+        .language-switcher {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 25px;
+            justify-content: center;
+        }
+
+        .lang-btn {
+            padding: 6px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            font-size: 12px;
+            color: #cccccc;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .lang-btn:hover {
+            background: rgba(99, 102, 241, 0.2);
+            border-color: #6366f1;
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            border-color: transparent;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #ec4899 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .description {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #cccccc;
+            margin-bottom: 20px;
+            transition: opacity 0.3s ease;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #ec4899 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
+        /* エピソードリスト */
+        .episodes {
+            display: grid;
+            gap: 12px;
+        }
+
+        .episode-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .episode-card:hover {
+            background: rgba(99, 102, 241, 0.05);
+            border-color: #6366f1;
+            transform: translateX(5px);
+        }
+
+        .episode-thumb {
+            width: 50px;
+            height: 65px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: center;
+            flex-shrink: 0;
+            color: white;
+        }
+
+        .episode-info {
+            flex: 1;
+        }
+
+        .episode-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: white;
+        }
+
+        .episode-desc {
+            font-size: 12px;
+            color: #999999;
+            margin-bottom: 4px;
+        }
+
+        .episode-meta {
+            font-size: 11px;
+            color: #666666;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .free-badge {
+            background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        /* コメントセクション */
+        .comments-section {
+            margin-top: 30px;
+        }
+
+        .comment-form {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .comment-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            font-size: 14px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .comment-input::placeholder {
+            color: #999;
+        }
+
+        .comment-input:focus {
+            outline: none;
+            border-color: #6366f1;
+        }
+
+        .comment-submit {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .comment-submit:hover {
+            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+        }
+
+        .comments-container {
+            space-y: 15px;
+        }
+
+        .comment-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .comment-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .author-avatar {
+            font-size: 16px;
+        }
+
+        .author-name {
+            font-size: 13px;
+            font-weight: 600;
+            background: linear-gradient(135deg, #ec4899 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .comment-time {
+            font-size: 11px;
+            color: #888;
+        }
+
+        .comment-text {
+            font-size: 14px;
+            color: #cccccc;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .comment-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            font-size: 12px;
+            color: #666;
+            cursor: pointer;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .action-btn:hover {
+            color: #6366f1;
+        }
+
+        .action-btn.liked {
+            color: #ec4899;
+        }
+
+        /* 成功メッセージ */
+        .success-message {
+            background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideInDown 0.5s ease-out;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* スクロールバー */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+        }
+
+        /* レスポンシブ調整 */
+        @media (max-width: 767px) {
+            .video-player {
+                max-width: 280px;
+            }
+            
+            .content {
+                padding: 20px 15px;
+            }
+            
+            .registration-form {
+                padding: 20px;
+            }
+            
+            .stats-row {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .stat-item {
+                font-size: 12px;
+                padding: 6px 10px;
+            }
+            
+            .benefits {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .benefit-item {
+                padding: 15px 12px;
+            }
+            
+            .benefit-icon {
+                font-size: 28px;
+            }
+            
+            .benefit-text {
+                font-size: 13px;
+            }
+        }
+
+        /* 静止画サムネイル */
+        .thumbnail-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%), #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 15px;
+            color: white;
+            text-align: center;
+        }
+
+        .thumbnail-badges {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .thumbnail-badge {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .thumbnail-badge.free {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .thumbnail-badge.story {
+            background: #FF6B35;
+            color: white;
+        }
+
+        .thumbnail-title {
+            font-size: 18px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .thumbnail-subtitle {
+            font-size: 12px;
+            color: #cccccc;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        .thumbnail-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .thumbnail-main-text {
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .thumbnail-highlight {
+            font-size: 22px;
+            font-weight: 800;
+            color: #FF6B35;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .thumbnail-box {
+            background: rgba(0,0,0,0.6);
+            border: 2px solid #FF6B35;
+            border-radius: 15px;
+            padding: 15px;
+            margin: 15px 0;
+            width: 90%;
+        }
+
+        .thumbnail-box-text {
+            font-size: 12px;
+            line-height: 1.6;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .thumbnail-arrow {
+            font-size: 14px;
+            color: #FF6B35;
+            margin: 5px 0;
+        }
+
+        .thumbnail-result {
+            font-size: 13px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .thumbnail-footer {
+            margin-top: auto;
+            padding-top: 15px;
+        }
+
+        .thumbnail-footer-highlight {
+            background: rgba(255, 107, 53, 0.3);
+            border: 2px solid #FF6B35;
+            padding: 10px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            color: white;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .thumbnail-footer-text {
+            font-size: 11px;
+            color: #cccccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="layout">
+            <!-- ヘッダーセクション - ReelShort風 -->
+            <section class="header-section">
+                <div class="header-video">
+                    <div class="video-player" onclick="playVideo()">
+                        <!-- キービジュアル：後で画像に差し替え -->
+                        <img src="./showcase-1.png" alt="【バカヤン】元とび職の逆転劇" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="video-duration">8:32</div>
+                    </div>
+                </div>
+                
+                <div class="header-info">
+                    <h1 class="title" id="mainTitle">【バカヤン】もし元とび職の不良が世界の名門大学に入学したら・・・こうなった。カルフォルニア大学バークレー校、通称UCバークレーでの「ぼくのやったこと」</h1>
+                    
+                    <div class="header-stats">
+                        <div class="header-stat" onclick="toggleLike()" id="likeButton">
+                            <span>❤️</span>
+                            <span id="likeCount">2.1K</span>
+                        </div>
+                        <div class="header-stat">
+                            <span>⭐</span>
+                            <span>4.9</span>
+                        </div>
+                        <div class="header-stat">
+                            <span>💬</span>
+                            <span>853</span>
+                        </div>
+                    </div>
+                    
+                    <div class="header-buttons">
+                        <button class="btn-primary" onclick="scrollToRegistration()">
+                            <span>▶️</span>
+                            今すぐ視聴
+                        </button>
+                    </div>
+                    
+                    <div class="header-tags">
+                        <span class="header-tag featured">実話ベース</span>
+                        <span class="header-tag">成長ストーリー</span>
+                        <span class="header-tag">感動</span>
+                        <span class="header-tag">逆転劇</span>
+                        <span class="header-tag">現代</span>
+                        <span class="header-tag">日本</span>
+                        <span class="header-tag">大学受験</span>
+                        <span class="header-tag">家族愛</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- コンテンツセクション -->
+            <main class="content">
+                <!-- 言語切り替え -->
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="ja">日本語</button>
+                    <button class="lang-btn" data-lang="en">English</button>
+                    <button class="lang-btn" data-lang="zh">繁體中文</button>
+                </div>
+                <!-- メール登録フォーム - 最優先 -->
+                <section class="section">
+                    <div id="success-message" class="success-message">
+                        <h3>✅ 登録完了！</h3>
+                        <p>メールアドレスに全3話の視聴リンクを送信しました。<br>迷惑メールフォルダもご確認ください。</p>
+                    </div>
+                    
+                    <div class="registration-form" id="registration-form">
+                        <div class="form-badge">限定無料</div>
+                        <h2 class="form-title" id="formTitle">🎬 感動の実話を無料で視聴</h2>
+                        <p class="form-subtitle" id="formSubtitle">メールアドレスを登録すると、全3話の視聴リンクをお送りします</p>
+                        
+                        <form id="email-form" onsubmit="handleSubmit(event)">
+                            <div class="form-group">
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    class="form-input" 
+                                    placeholder="your-email@example.com" 
+                                    required
+                                >
+                            </div>
+                            
+                            <div class="form-group">
+                                <input 
+                                    type="text" 
+                                    id="name" 
+                                    name="name" 
+                                    class="form-input" 
+                                    placeholder="お名前（任意）"
+                                >
+                            </div>
+                            
+                            <button type="submit" class="form-submit" id="submit-btn">
+                                今すぐ無料で視聴開始
+                            </button>
+                            
+                            <p class="privacy-notice">
+                                ※ 個人情報は適切に管理し、作品の配信以外には使用いたしません。
+                            </p>
+                        </form>
+                        
+                        <!-- 特典ベネフィット -->
+                        <div class="benefits">
+                            <div class="benefit-item">
+                                <div class="benefit-icon">🎬</div>
+                                <div class="benefit-text" id="benefit1">全3話完全無料<br>アクセス権</div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon">🎯</div>
+                                <div class="benefit-text" id="benefit2">制作秘話・キャラクター<br>設定資料集</div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon">👥</div>
+                                <div class="benefit-text" id="benefit3">ファン参加型企画<br>優先参加権</div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon">🚀</div>
+                                <div class="benefit-text" id="benefit4">続編制作情報<br>先行お知らせ</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ストーリー -->
+                <section class="section">
+                    <h2 class="section-title" id="storyTitle">ストーリー</h2>
+                    <div class="description" id="storyDescription">
+                        <span class="highlight">13歳の冬、神奈川県川崎市の宮前警察署</span>で「ぼくのやったこと」という調書を書かされた琢也。偏差値30の高校を卒業後、とび職として月収35万円を稼いでいた。
+                        <br><br>
+                        19歳のある日、<span class="highlight">売れない保険営業マンだった父親がハワイで表彰</span>されることに。そこで出会ったのは、年収2億円のトップセールスマンだった。「同じ時間働いて、なぜここまで差があるのか？」
+                        <br><br>
+                        24歳で決意した琢也の目標は、<span class="highlight">世界大学ランキング10位のUCバークレー</span>。「促す」「為替」すら読めない男が、本当に世界最高峰の大学に合格できるのか？
+                    </div>
+                </section>
+
+                <!-- エピソード一覧 -->
+                <section class="section">
+                    <h2 class="section-title" id="episodeTitle">エピソード一覧</h2>
+                    <div class="episodes">
+                        <div class="episode-card" onclick="showRegistrationPrompt()">
+                            <div class="episode-thumb">第1話</div>
+                            <div class="episode-info">
+                                <div class="episode-title">「ぼくのやったこと」</div>
+                                <div class="episode-desc">13歳、神奈川県川崎市で逮捕。警察で書かされた屈辱の調書タイトル</div>
+                                <div class="episode-meta">
+                                    <span class="free-badge">無料</span>
+                                    <span>8分32秒</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="episode-card" onclick="showRegistrationPrompt()">
+                            <div class="episode-thumb">第2話</div>
+                            <div class="episode-info">
+                                <div class="episode-title">ハワイで見た格差の現実</div>
+                                <div class="episode-desc">売れない父の16年ぶり表彰式。年収2億円の営業マンとの出会いが人生を変える</div>
+                                <div class="episode-meta">
+                                    <span class="free-badge">無料</span>
+                                    <span>9分15秒</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="episode-card" onclick="showRegistrationPrompt()">
+                            <div class="episode-thumb">第3話</div>
+                            <div class="episode-info">
+                                <div class="episode-title">「促す」が読めない24歳</div>
+                                <div class="episode-desc">新聞すら読めないレベルから、父の2000万投資でUCバークレーへの無謀な挑戦</div>
+                                <div class="episode-meta">
+                                    <span class="free-badge">無料</span>
+                                    <span>10分8秒</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- コメントセクション -->
+                <section class="comments-section" id="commentsSection">
+                    <h3 class="section-title" id="commentSectionTitle">コメント</h3>
+                    
+                    <div class="comment-form">
+                        <input type="text" class="comment-input" id="commentInput" placeholder="コメントを投稿...">
+                        <button class="comment-submit" onclick="addComment()">投稿</button>
+                    </div>
+                    
+                    <div class="comments-container" id="commentsContainer">
+                        <div class="comment-item">
+                            <div class="comment-author">
+                                <span class="author-avatar">👤</span>
+                                <span class="author-name">田中太郎</span>
+                                <span class="comment-time">2時間前</span>
+                            </div>
+                            <div class="comment-text">
+                                まさかこんな展開になるとは！実話だからこそ説得力がありますね。次回が楽しみです。
+                            </div>
+                            <div class="comment-actions">
+                                <button class="action-btn" onclick="toggleCommentLike(this)">
+                                    <span>👍</span>
+                                    <span>12</span>
+                                </button>
+                                <button class="action-btn">返信</button>
+                            </div>
+                        </div>
+                        
+                        <div class="comment-item">
+                            <div class="comment-author">
+                                <span class="author-avatar">👤</span>
+                                <span class="author-name">佐藤花子</span>
+                                <span class="comment-time">5時間前</span>
+                            </div>
+                            <div class="comment-text">
+                                「促す」が読めないところから始まる勉強法、とても参考になりました。自分も頑張ろうと思います！
+                            </div>
+                            <div class="comment-actions">
+                                <button class="action-btn" onclick="toggleCommentLike(this)">
+                                    <span>👍</span>
+                                    <span>8</span>
+                                </button>
+                                <button class="action-btn">返信</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // 多言語対応コンテンツ
+        const translations = {
+            ja: {
+                mainTitle: "【バカヤン】もし元とび職の不良が世界の名門大学に入学したら・・・こうなった。カルフォルニア大学バークレー校、通称UCバークレーでの「ぼくのやったこと」",
+                formTitle: "🎬 感動の実話を無料で視聴",
+                formSubtitle: "メールアドレスを登録すると、全3話の視聴リンクをお送りします",
+                submitButton: "今すぐ無料で視聴開始",
+                watchNow: "今すぐ視聴",
+                storyTitle: "ストーリー",
+                storyDescription: `<span class="highlight">13歳の冬、神奈川県川崎市の宮前警察署</span>で「ぼくのやったこと」という調書を書かされた琢也。偏差値30の高校を卒業後、とび職として月収35万円を稼いでいた。<br><br>19歳のある日、<span class="highlight">売れない保険営業マンだった父親がハワイで表彰</span>されることに。そこで出会ったのは、年収2億円のトップセールスマンだった。「同じ時間働いて、なぜここまで差があるのか？」<br><br>24歳で決意した琢也の目標は、<span class="highlight">世界大学ランキング10位のUCバークレー</span>。「促す」「為替」すら読めない男が、本当に世界最高峰の大学に合格できるのか？`,
+                episodeTitle: "エピソード一覧",
+                episode1Title: "「ぼくのやったこと」",
+                episode1Desc: "13歳、神奈川県川崎市で逮捕。警察で書かされた屈辱の調書タイトル",
+                episode2Title: "ハワイで見た格差の現実",
+                episode2Desc: "売れない父の16年ぶり表彰式。年収2億円の営業マンとの出会いが人生を変える",
+                episode3Title: "「促す」が読めない24歳",
+                episode3Desc: "新聞すら読めないレベルから、父の2000万投資でUCバークレーへの無謀な挑戦",
+                commentSectionTitle: "コメント",
+                privacyNotice: "※ 個人情報は適切に管理し、作品の配信以外には使用いたしません。",
+                emailPlaceholder: "your-email@example.com",
+                namePlaceholder: "お名前（任意）",
+                benefit1: "全3話完全無料<br>アクセス権",
+                benefit2: "制作秘話・キャラクター<br>設定資料集",
+                benefit3: "ファン参加型企画<br>優先参加権",
+                benefit4: "続編制作情報<br>先行お知らせ"
+            },
+            en: {
+                mainTitle: "[BAKAYAN] What Happens When a Former Construction Worker Delinquent Enters a World-Renowned University... This Is What Happened. 'What I Did' at UC Berkeley",
+                formTitle: "🎬 Watch This Inspiring True Story for Free",
+                formSubtitle: "Register your email to receive access links to all 3 episodes",
+                submitButton: "Start Watching for Free Now",
+                watchNow: "Watch Now",
+                storyTitle: "Story",
+                storyDescription: `At age 13, Takuya was forced to write a report titled <span class="highlight">"What I Did"</span> at Miyamae Police Station in Kawasaki. After graduating from a bottom-tier high school, he worked as a scaffolder earning 350,000 yen monthly.<br><br>At 19, his father—a struggling insurance salesman—was finally honored at a ceremony in Hawaii. There, Takuya met a top salesman earning <span class="highlight">200 million yen annually</span>. "Why is there such a gap when we work the same hours?"<br><br>At 24, Takuya set his sights on <span class="highlight">UC Berkeley, ranked 10th globally</span>. Could a man who couldn't even read basic newspaper terms really get into one of the world's top universities?`,
+                episodeTitle: "Episodes",
+                episode1Title: "What I Did",
+                episode1Desc: "Arrested at 13 in Kawasaki. The humiliating police report that started it all",
+                episode2Title: "Reality Check in Hawaii",
+                episode2Desc: "Father's first award in 16 years. Meeting a 200M yen/year salesman changes everything",
+                episode3Title: "The 24-Year-Old Who Can't Read",
+                episode3Desc: "From illiterate to UC Berkeley with father's 20M yen investment",
+                commentSectionTitle: "Comments",
+                privacyNotice: "※ Your personal information will be properly managed and used only for content delivery.",
+                emailPlaceholder: "your-email@example.com",
+                namePlaceholder: "Name (Optional)",
+                benefit1: "All 3 Episodes<br>Full Free Access",
+                benefit2: "Behind-the-Scenes &<br>Character Design Collection",
+                benefit3: "Priority Access to<br>Fan Events",
+                benefit4: "Early Updates on<br>Sequel Production"
+            },
+            zh: {
+                mainTitle: "【BAKAYAN】從工地混混到加州名校：一個少年的奇蹟翻身",
+                formTitle: "🎬 免費觀看感人真實故事",
+                formSubtitle: "註冊電子郵箱，我們將寄送全3集觀看連結",
+                submitButton: "立即免費開始觀看",
+                watchNow: "立即觀看",
+                storyTitle: "故事簡介",
+                storyDescription: `13歲那年冬天，琢也在<span class="highlight">神奈川縣川崎市宮前警察署</span>被迫寫下屈辱的調書「我做過的事」。從偏差值30的高中畢業後，當起鷹架工人月薪35萬日圓。<br><br>19歲時，<span class="highlight">當了16年業績不振保險業務員的父親終於在夏威夷獲得表彰</span>。在那裡，他遇見了年收2億日圓的頂尖業務員。「同樣的工作時間，為什麼差距這麼大？」<br><br>24歲時，琢也決心要考進<span class="highlight">世界大學排名第10的加州柏克萊</span>。一個連「促進」、「匯率」都不會唸的男人，真的能考上世界頂尖大學嗎？`,
+                episodeTitle: "集數列表",
+                episode1Title: "「我做過的事」",
+                episode1Desc: "13歲在川崎市被捕。警察署裡寫下的屈辱調書標題",
+                episode2Title: "夏威夷看見的貧富差距",
+                episode2Desc: "失敗父親16年來首次獲獎。遇見年收2億的業務員改變人生",
+                episode3Title: "連「促進」都不會唸的24歲",
+                episode3Desc: "從文盲程度到父親投資2000萬日圓挑戰加州柏克萊",
+                commentSectionTitle: "留言",
+                privacyNotice: "※ 個人資料將妥善管理，僅用於作品發送。",
+                emailPlaceholder: "your-email@example.com",
+                namePlaceholder: "姓名（選填）",
+                benefit1: "全3集完全免費<br>觀看權限",
+                benefit2: "製作祕話・角色<br>設定資料集",
+                benefit3: "粉絲參與型企劃<br>優先參加權",
+                benefit4: "續篇製作情報<br>搶先通知"
+            }
+        };
+
+        let isLiked = false;
+        let likeCount = 2100;
+        let commentCount = 853;
+        let currentLang = 'ja';
+
+        // 言語切り替え
+        function switchLanguage(lang) {
+            currentLang = lang;
+            const content = translations[lang];
+            
+            document.getElementById('mainTitle').innerHTML = content.mainTitle;
+            document.getElementById('formTitle').innerHTML = content.formTitle;
+            document.getElementById('formSubtitle').textContent = content.formSubtitle;
+            document.getElementById('submit-btn').textContent = content.submitButton;
+            document.querySelector('.btn-primary').innerHTML = `<span>▶️</span> ${content.watchNow}`;
+            document.getElementById('storyTitle').textContent = content.storyTitle;
+            document.getElementById('storyDescription').innerHTML = content.storyDescription;
+            document.getElementById('episodeTitle').textContent = content.episodeTitle;
+            document.getElementById('commentSectionTitle').textContent = content.commentSectionTitle;
+            document.querySelector('.privacy-notice').textContent = content.privacyNotice;
+            document.getElementById('email').placeholder = content.emailPlaceholder;
+            document.getElementById('name').placeholder = content.namePlaceholder;
+            
+            // ベネフィットのテキストを更新
+            document.getElementById('benefit1').innerHTML = content.benefit1;
+            document.getElementById('benefit2').innerHTML = content.benefit2;
+            document.getElementById('benefit3').innerHTML = content.benefit3;
+            document.getElementById('benefit4').innerHTML = content.benefit4;
+            
+            // エピソードのテキストを更新
+            const episodes = document.querySelectorAll('.episode-card');
+            episodes[0].querySelector('.episode-title').textContent = content.episode1Title;
+            episodes[0].querySelector('.episode-desc').textContent = content.episode1Desc;
+            episodes[1].querySelector('.episode-title').textContent = content.episode2Title;
+            episodes[1].querySelector('.episode-desc').textContent = content.episode2Desc;
+            episodes[2].querySelector('.episode-title').textContent = content.episode3Title;
+            episodes[2].querySelector('.episode-desc').textContent = content.episode3Desc;
+            
+            // アクティブボタン更新
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
+        }
+
+        // イベントリスナー
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    switchLanguage(btn.dataset.lang);
+                });
+            });
+        });
+
+        function toggleLike() {
+            const likeCountElement = document.getElementById('likeCount');
+            const likeButton = document.getElementById('likeButton');
+            
+            if (isLiked) {
+                likeCount--;
+                likeButton.classList.remove('liked');
+                isLiked = false;
+            } else {
+                likeCount++;
+                likeButton.classList.add('liked');
+                isLiked = true;
+            }
+            
+            likeCountElement.textContent = formatNumber(likeCount);
+        }
+
+        function formatNumber(num) {
+            if (num >= 1000) {
+                return (num / 1000).toFixed(1) + 'K';
+            }
+            return num;
+        }
+
+        function playVideo() {
+            const messages = {
+                ja: '第1話を再生します！\n\n「俺は鈴木琢也。13歳の冬、すべてが始まる」\n\n（実際の実装では動画プレーヤーが開きます）',
+                en: 'Playing Episode 1!\n\n"I\'m Takuya Suzuki. Everything began that winter when I was 13."\n\n(Video player will open in actual implementation)',
+                zh: '播放第1集！\n\n「我是鈴木琢也。13歲那年冬天，一切都開始了」\n\n（實際實施時將開啟影片播放器）'
+            };
+            alert(messages[currentLang]);
+        }
+
+        function scrollToRegistration() {
+            document.getElementById('registration-form').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+            document.getElementById('email').focus();
+        }
+
+        function showRegistrationPrompt() {
+            const messages = {
+                ja: 'この感動の実話をフル視聴するには、メール登録が必要です。\n上部の登録フォームから無料でご登録ください。',
+                en: 'Email registration is required to watch the full episodes.\nPlease register for free using the form above.',
+                zh: '需要註冊電子郵箱才能觀看完整集數。\n請使用上方表單免費註冊。'
+            };
+            alert(messages[currentLang]);
+            scrollToRegistration();
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const submitBtn = document.getElementById('submit-btn');
+            const email = document.getElementById('email').value;
+            const name = document.getElementById('name').value;
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = currentLang === 'ja' ? '送信中...' : currentLang === 'en' ? 'Sending...' : '發送中...';
+            
+            setTimeout(() => {
+                document.getElementById('success-message').classList.add('show');
+                document.getElementById('registration-form').style.display = 'none';
+                
+                console.log('登録情報:', { email, name });
+            }, 2000);
+        }
+
+        function addComment() {
+            const commentInput = document.getElementById('commentInput');
+            const commentText = commentInput.value.trim();
+            
+            if (commentText) {
+                const commentsContainer = document.getElementById('commentsContainer');
+                const newComment = document.createElement('div');
+                newComment.className = 'comment-item';
+                const authorNames = {
+                    ja: 'あなた',
+                    en: 'You',
+                    zh: '您'
+                };
+                const timeTexts = {
+                    ja: 'たった今',
+                    en: 'Just now',
+                    zh: '剛剛'
+                };
+                newComment.innerHTML = `
+                    <div class="comment-author">
+                        <span class="author-avatar">👤</span>
+                        <span class="author-name">${authorNames[currentLang]}</span>
+                        <span class="comment-time">${timeTexts[currentLang]}</span>
+                    </div>
+                    <div class="comment-text">${commentText}</div>
+                    <div class="comment-actions">
+                        <button class="action-btn" onclick="toggleCommentLike(this)">
+                            <span>👍</span>
+                            <span>0</span>
+                        </button>
+                        <button class="action-btn">${currentLang === 'ja' ? '返信' : currentLang === 'en' ? 'Reply' : '回覆'}</button>
+                    </div>
+                `;
+                
+                commentsContainer.insertBefore(newComment, commentsContainer.firstChild);
+                commentInput.value = '';
+                
+                commentCount++;
+            }
+        }
+
+        function toggleCommentLike(button) {
+            const likeSpan = button.querySelector('span:last-child');
+            let currentLikes = parseInt(likeSpan.textContent) || 0;
+            
+            if (button.classList.contains('liked')) {
+                button.classList.remove('liked');
+                currentLikes--;
+            } else {
+                button.classList.add('liked');
+                currentLikes++;
+            }
+            
+            likeSpan.textContent = currentLikes;
+        }
+    </script>
+</body>
+</html>
