@@ -1287,21 +1287,41 @@
                     Preview what's coming to MagicHolic</p>
             </div>
             <div class="showcase-grid">
+                <!-- BAKAYANのキービジュアル -->
+                <div class="showcase-item reveal" style="position: relative; overflow: hidden; cursor: pointer;">
+                    <a href="./bakayan-lp.html" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10;"></a>
+                    <!-- 既存の背景を完全に無効化 -->
+                    <style>
+                        .showcase-grid .showcase-item:first-child::before {
+                            display: none !important;
+                            background: none !important;
+                        }
+                    </style>
+                    <!-- 画像 -->
+                    <img src="./showcase-1.png" alt="BAKAYAN" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;">
+                    <!-- コンテンツ -->
+                    <div class="showcase-content" style="position: relative; z-index: 2; background: none; padding: 2rem;">
+                        <h3 class="showcase-title" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);"
+                            data-en="BAKAYAN" 
+                            data-zh="BAKAYAN">BAKAYAN</h3>
+                        <p class="showcase-info" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);"
+                            data-en="What if a delinquent construction worker entered a world-renowned university?" 
+                            data-zh="從工地混混到加州名校：一個少年的奇蹟翻身">もし元とび職の不良が世界の名門大学に入学したら</p>
+                    </div>
+                </div>                
+                <!-- Coming Soon 2 -->
                 <div class="showcase-item reveal">
                     <div class="showcase-content">
                         <h3 class="showcase-title" data-en="Coming Soon" data-zh="即將推出">Coming Soon</h3>
                     </div>
                 </div>
+                <!-- Coming Soon 3 -->
                 <div class="showcase-item reveal">
                     <div class="showcase-content">
                         <h3 class="showcase-title" data-en="Coming Soon" data-zh="即將推出">Coming Soon</h3>
                     </div>
                 </div>
-                <div class="showcase-item reveal">
-                    <div class="showcase-content">
-                        <h3 class="showcase-title" data-en="Coming Soon" data-zh="即將推出">Coming Soon</h3>
-                    </div>
-                </div>
+                <!-- Coming Soon 4 -->
                 <div class="showcase-item reveal">
                     <div class="showcase-content">
                         <h3 class="showcase-title" data-en="Coming Soon" data-zh="即將推出">Coming Soon</h3>
@@ -1309,9 +1329,7 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- CTA Section -->
+    </section>    <!-- CTA Section -->
     <section class="final-cta-section" id="waitlist">
         <div class="cta-content reveal">
             <h2 class="cta-title" data-en="Be the First to Experience MagicHolic" data-zh="成為首批體驗MagicHolic的用戶">Be the
